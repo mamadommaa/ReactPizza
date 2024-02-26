@@ -17,6 +17,7 @@ const Sort = () => {
                     {["популярности", "цене", "алфавиту"].map((element) => {
                         return (
                             <li
+                                key={element}
                                 onClick={() => {
                                     setActiveItem(element);
                                 }}
@@ -51,9 +52,10 @@ const Sort = () => {
                     <b>Сортировка по:</b>
                 </div>
                 <span onClick={handleActive}>
-                    {["популярности", "цене", "алфавиту"].filter(
+                    {/* {["популярности", "цене", "алфавиту"].filter(
                         (element) => activeItem === element
-                    )}
+                    )} */}
+                    {activeItem}
                 </span>
             </div>
             {active === 1 ? <SortPopap /> : null}
