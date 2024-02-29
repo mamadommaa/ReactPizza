@@ -1,43 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const Sort = () => {
-    // показать div со списком
-    const [active, setActive] = useState(null);
-    const handleActive = () => {
-        setActive(1);
-    };
-
-    // задать выбранный элемент
+    const [visiblePopap, setVisiblePopap] = useState(false);
     const [activeItem, setActiveItem] = useState("популярности");
 
-    const SortPopap = () => {
-        return (
-            <div className="sort__popup">
-                <ul>
-                    {["популярности", "цене", "алфавиту"].map((element) => {
-                        return (
-                            <li
-                                key={element}
-                                onClick={() => {
-                                    setActiveItem(element);
-                                }}
-                                className={
-                                    activeItem === element ? "active" : null
-                                }
-                            >
-                                {element}
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-        );
+    const sortRef = useRef();
+    const handleOutsideClick = (e) => {
+        if (!e.composedPath().includes(sortRef.current)) {
+            setVisiblePopap(false);
+        }
     };
+    // если у useEffect вторым аргументом [], то работать он будет только при монтировании компонента - ему плевать на перерендер
+    // если в массив добавить переменную [visiblePopap], то useEffect сработает только при ее изменении
+    useEffect(() => {
+        document.body.addEventListener("click", handleOutsideClick);
+    }, []);
+
     return (
-        <div className="sort">
+        <div ref={sortRef} className="sort">
             <div className="sort__label">
                 <div>
                     <svg
+                        className={visiblePopap ? "rotated" : ""}
                         width={10}
                         height={6}
                         viewBox="0 0 10 6"
@@ -51,14 +35,36 @@ const Sort = () => {
                     </svg>
                     <b>Сортировка по:</b>
                 </div>
-                <span onClick={handleActive}>
-                    {/* {["популярности", "цене", "алфавиту"].filter(
-                        (element) => activeItem === element
-                    )} */}
+                <span
+                    onClick={() => {
+                        setVisiblePopap(!visiblePopap);
+                    }}
+                >
                     {activeItem}
                 </span>
             </div>
-            {active === 1 ? <SortPopap /> : null}
+            {visiblePopap && (
+                <div className="sort__popup">
+                    <ul>
+                        {["популярности", "цене", "алфавиту"].map((element) => {
+                            return (
+                                <li
+                                    key={element}
+                                    onClick={() => {
+                                        setActiveItem(element);
+                                        setVisiblePopap(false);
+                                    }}
+                                    className={
+                                        activeItem === element ? "active" : null
+                                    }
+                                >
+                                    {element}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 };
