@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const PizzaBlock = ({ name, imageUrl, price, types, sizes }) => {
     const [activeType, setActiveType] = useState(types[0]);
@@ -31,9 +32,10 @@ const PizzaBlock = ({ name, imageUrl, price, types, sizes }) => {
                     })}
                 </ul>
                 <ul>
-                    {[26, 30, 40].map((element, index) => {
+                    {[26, 30, 40].map((element) => {
                         return (
                             <li
+                                key={element}
                                 className={classNames({
                                     active: activeSize === element,
                                     disabled: !sizes.includes(element),
@@ -72,6 +74,23 @@ const PizzaBlock = ({ name, imageUrl, price, types, sizes }) => {
             </div>
         </div>
     );
+};
+// не обязательно, но желательно
+PizzaBlock.propTypes = {
+    name: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    // строка ниже значит type array из number + обзательно
+    types: PropTypes.arrayOf(PropTypes.number).isRequired,
+    sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+PizzaBlock.defaultProps = {
+    // если массив не придет приложение не умрет
+    types: [],
+    sizes: [],
+    name: "---",
+    price: 0,
 };
 
 export default PizzaBlock;
