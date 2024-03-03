@@ -1,28 +1,29 @@
-// подключили импорты
+// // подключили импорты
+// import { configureStore } from "@reduxjs/toolkit";
+// import rootReducer from "./reducers";
+// let store = configureStore({
+//     reducer: rootReducer,
+//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// });
+
+// window.store = store;
+
+// export default store;
 import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "@reduxjs/toolkit";
+import rootReducer from "./reducers";
 
-// простой пример reducer
-function counter(state = 0, action) {
-    switch (action.type) {
-        case "ДОБАВИТЬ":
-            return state + 1;
-        case "УБАВИТЬ":
-            return state - 1;
-        default:
-            return state;
-    }
-}
+// Проверяем наличие расширения Redux DevTools и добавляем его, если оно доступно
+const reduxDevToolsExtension =
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__();
 
-// все reduser нужно всегда склеивать в один большой
-let reducers = combineReducers({
-    couners: counter,
+// Создаем хранилище с помощью configureStore, передавая ему rootReducer и reduxDevToolsExtension
+const store = configureStore({
+    reducer: rootReducer,
+    devTools: reduxDevToolsExtension, // Используем расширение Redux DevTools
 });
 
-// Передача глобального редюсера в конфигурацию хранилища store и его инициализация
-let store = configureStore({
-    reducer: reducers,
-});
+// Делаем хранилище доступным в глобальной области видимости для удобства отладки
+window.store = store;
 
-// обязательно экспортировали
 export default store;
