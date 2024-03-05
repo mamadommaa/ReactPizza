@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-const Categories = ({ items }) => {
+import { memo } from "react";
+const Categories = memo(({ items, saveCategoriesInRedux }) => {
     const [activeItem, setActiveItem] = useState(null);
 
     return (
@@ -17,7 +17,10 @@ const Categories = ({ items }) => {
                         <li
                             key={el}
                             className={activeItem === el ? "active" : ""}
-                            onClick={() => setActiveItem(el)}
+                            onClick={() => {
+                                activeItem !== el && setActiveItem(el);
+                                saveCategoriesInRedux(el);
+                            }}
                         >
                             {el}
                         </li>
@@ -25,6 +28,6 @@ const Categories = ({ items }) => {
             </ul>
         </div>
     );
-};
+});
 
 export default Categories;

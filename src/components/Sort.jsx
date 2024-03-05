@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-
-const Sort = () => {
+import { memo } from "react";
+const Sort = memo(() => {
     const [visiblePopap, setVisiblePopap] = useState(false);
     const [activeItem, setActiveItem] = useState("популярности");
 
@@ -67,6 +67,6 @@ const Sort = () => {
             )}
         </div>
     );
-};
+});
 
 export default Sort;
