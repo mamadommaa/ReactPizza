@@ -5,8 +5,11 @@
 @import "components/all";
 
 body {
-    background-color: $background;
+    // background-color: $background;
     padding: 50px 0px;
+    background-image: url(https://habrastorage.org/getpro/habr/upload_files/8c0/7b2/7ca/8c07b27ca58a9ab2015127be83a15304.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 .wrapper {

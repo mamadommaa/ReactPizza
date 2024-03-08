@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { memo } from "react";
 const Categories = memo(({ items, saveCategoriesInRedux }) => {
     const [activeItem, setActiveItem] = useState(null);
+    console.log(activeItem + "  rerender");
 
     return (
         <div className="categories">
