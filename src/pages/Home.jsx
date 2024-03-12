@@ -3,6 +3,8 @@ import { Categories, Sort, PizzaBlock } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../redux/actions/filters";
 import { useCallback } from "react";
+import { useEffect } from "react";
+import { fetchPizzas } from "../redux/actions/pizzas";
 
 const items = [
     "Пиццы",
@@ -15,8 +17,12 @@ const items = [
 ];
 
 const Home = () => {
-    const pizzas = useSelector(({ pizzas }) => pizzas.items);
     const dispatch = useDispatch();
+    const pizzas = useSelector(({ pizzas }) => pizzas.items);
+    useEffect(() => {
+        dispatch(fetchPizzas());
+    }, [dispatch]);
+
     const saveCategoriesInRedux = useCallback(
         (name) => {
             dispatch(setCategory(name));
