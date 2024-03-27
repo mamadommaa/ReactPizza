@@ -1,27 +1,21 @@
 import React from "react";
-import { Categories, Sort, PizzaBlock } from "../components";
+import { Categories, Sort, PizzaBlock, PizzaLoaderBlock } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../redux/actions/filters";
 import { useCallback } from "react";
 import { useEffect } from "react";
 import { fetchPizzas } from "../redux/actions/pizzas";
 
-const items = [
-    "Пиццы",
-    "Комбо",
-    "Закуски",
-    "Кофе",
-    "Напитки",
-    "Десерты",
-    "Соуsdsdсы",
-];
+const items = ["Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
 
 const Home = () => {
     const dispatch = useDispatch();
     const pizzas = useSelector(({ pizzas }) => pizzas.items);
+    const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
+    const { category, sortBy } = useSelector(({ filters }) => filters);
     useEffect(() => {
-        dispatch(fetchPizzas());
-    }, [dispatch]);
+        dispatch(fetchPizzas(sortBy, category));
+    }, [category, sortBy, dispatch]);
 
     const saveCategoriesInRedux = useCallback(
         (name) => {
@@ -36,22 +30,19 @@ const Home = () => {
                 <Categories
                     saveCategoriesInRedux={saveCategoriesInRedux}
                     items={items}
+                    activeItem={category}
                 />
-                <Sort />
+                <Sort sortBy={sortBy} />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
-                {pizzas &&
-                    pizzas.map((element) => {
-                        return (
-                            <PizzaBlock
-                                key={element.id}
-                                // если бы я написала element = {element}, то через деструктуризацию смогла бы получить только key и объект element с id, name и тд
-                                // в синтаксисе ниже весь объект element будет разбит на переменные, которые можно извлечь через деструктуризацию в PizzaBLock
-                                {...element}
-                            />
-                        );
-                    })}
+                {isLoaded
+                    ? pizzas.map((element) => (
+                          <PizzaBlock key={element.id} {...element} />
+                      ))
+                    : Array(10)
+                          .fill()
+                          .map((_, index) => <PizzaLoaderBlock key={index} />)}
             </div>
         </div>
     );

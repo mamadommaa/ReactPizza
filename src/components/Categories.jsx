@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import { memo } from "react";
-const Categories = memo(({ items, saveCategoriesInRedux }) => {
-    const [activeItem, setActiveItem] = useState(null);
-    console.log(activeItem + "  rerender");
+const Categories = memo(({ items, saveCategoriesInRedux, activeItem }) => {
+    // const [activeItem, setActiveItem] = useState(null);
 
     return (
         <div className="categories">
             <ul>
                 <li
                     className={activeItem === null ? "active" : ""}
-                    onClick={() => setActiveItem(null)}
+                    // onClick={() => activeItem(null)}
+                    onClick={() => {
+                        saveCategoriesInRedux(null);
+                    }}
                 >
                     Всё
                 </li>
@@ -19,7 +21,7 @@ const Categories = memo(({ items, saveCategoriesInRedux }) => {
                             key={el}
                             className={activeItem === el ? "active" : ""}
                             onClick={() => {
-                                activeItem !== el && setActiveItem(el);
+                                // activeItem !== el && activeItem(el);
                                 saveCategoriesInRedux(el);
                             }}
                         >

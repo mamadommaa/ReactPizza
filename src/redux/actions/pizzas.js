@@ -1,9 +1,36 @@
 import axios from "axios";
 
-export const fetchPizzas = () => (dispatch) => {
-    return axios.get("http://localhost:3010/pizzas").then(({ data }) => {
-        dispatch(setPizzas(data));
-    });
+export const setLoaded = (val) => ({
+    type: "SET_LOADED",
+    payload: val,
+});
+
+export const fetchPizzas = (sortBy, category) => (dispatch) => {
+    dispatch(setLoaded(false));
+    console.log(category)
+    if (category === null) {
+        category = '';
+    }
+    let p;
+    switch (sortBy) {
+  case 'цене':
+    p = "price"
+    break;
+  case 'популярности':
+    p = "rating"
+    break;
+  case 'алфавиту':
+    p = "name"
+    break;
+  default:
+    break;
+    
+}
+    return axios
+        .get(`http://localhost:3010/pizzas?category=${category}&_sort=${p}`)
+        .then(({ data }) => {
+            dispatch(setPizzas(data));
+        });
 };
 // я думала можно юзануть тут useDispatch, чтоб просто написать функцию, которая будет в нужном месте вызывать setPizzas
 // но использовать useDispatch можно только в компоненте

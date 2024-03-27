@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { memo } from "react";
-const Sort = memo(() => {
+import { useDispatch } from "react-redux";
+import { setSortBy } from "../redux/actions/filters";
+const Sort = memo(({ sortBy }) => {
+    console.log(sortBy);
+    const dispatch = useDispatch();
     const [visiblePopap, setVisiblePopap] = useState(false);
-    const [activeItem, setActiveItem] = useState("популярности");
 
     const sortRef = useRef();
     const handleOutsideClick = (e) => {
@@ -40,7 +43,7 @@ const Sort = memo(() => {
                         setVisiblePopap(!visiblePopap);
                     }}
                 >
-                    {activeItem}
+                    {sortBy}
                 </span>
             </div>
             {visiblePopap && (
@@ -51,11 +54,11 @@ const Sort = memo(() => {
                                 <li
                                     key={element}
                                     onClick={() => {
-                                        setActiveItem(element);
                                         setVisiblePopap(false);
+                                        dispatch(setSortBy(element));
                                     }}
                                     className={
-                                        activeItem === element ? "active" : null
+                                        sortBy === element ? "active" : null
                                     }
                                 >
                                     {element}
