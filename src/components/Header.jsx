@@ -3,12 +3,9 @@ import logo from "../assets/img/pizza-logo.svg";
 import Button from "./Button";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import cart from "../redux/reducers/cart";
 
 const Header = () => {
-    // const totalPrice = useSelector(({ cart }) => cart.totalPrice);
-    // const totalCount = useSelector(({ cart }) => cart.totalCount);
-    const {totalPrice, totalCount} = useSelector(({ cart }) => cart);
+    const { totalPrice, totalCount } = useSelector(({ cart }) => cart);
     return (
         <div className="header">
             <div className="container">
@@ -55,7 +52,7 @@ const Header = () => {
                                     strokeLinejoin="round"
                                 />
                             </svg>
-                            <span>{ totalCount}</span>
+                            <span>{totalCount}</span>
                         </Button>
                     </NavLink>
                 </div>

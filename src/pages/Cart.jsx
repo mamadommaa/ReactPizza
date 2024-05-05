@@ -1,11 +1,14 @@
 import { element } from "prop-types";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCartItems } from "../redux/actions/cart";
 
 const Cart = () => {
     const totalPrice = useSelector(({ cart }) => cart.totalPrice);
     const totalCount = useSelector(({ cart }) => cart.totalCount);
     const items = useSelector(({ cart }) => cart.items);
+    // здесь код с использованием reducer для очистки cart 
+    const dispatch = useDispatch();
     return (
         <div className="container container--cart">
             <div className="cart">
@@ -79,7 +82,9 @@ const Cart = () => {
                                 strokeLinejoin="round"
                             />
                         </svg>
-                        <span>Очистить корзину</span>
+                        <button className = "delete__cart__items" onClick = {() => {dispatch(deleteCartItems())}}>
+                            <span>Очистить корзину</span>
+                        </button>
                     </div>
                 </div>
                 <div className="content__items">

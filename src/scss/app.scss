@@ -7,8 +7,9 @@
 body {
     // background-color: $background;
     padding: 50px 0px;
+    // background-image:  url('https://artifex.ru/wp-content/uploads/2018/08/1.jpeg');
     // background-image: url(https://habrastorage.org/getpro/habr/upload_files/8c0/7b2/7ca/8c07b27ca58a9ab2015127be83a15304.png);
-    background-image: url("https://flomaster.top/o/uploads/posts/2024-02/1708930044_flomaster-top-p-oboi-shreka-instagram-narisovannie-1.jpg");
+    // background-image: url("https://flomaster.top/o/uploads/posts/2024-02/1708930044_flomaster-top-p-oboi-shreka-instagram-narisovannie-1.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -314,4 +315,11 @@ body {
             font-size: 18px;
         }
     }
+}
+
+
+.delete__cart__items {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }

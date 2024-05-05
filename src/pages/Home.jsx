@@ -17,10 +17,7 @@ const Home = () => {
         dispatch(fetchPizzas(sortBy, category));
     }, [category, sortBy, dispatch]);
 
-    const saveCategoriesInRedux = useCallback(
-        (name) => {
-            dispatch(setCategory(name));
-        },
+    const saveCategoriesInRedux = useCallback((name) => { dispatch(setCategory(name))} ,
         [dispatch]
     );
 
