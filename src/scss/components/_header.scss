@@ -10,6 +10,17 @@
         justify-content: space-between;
     }
 
+    &__navlink-key {
+        margin-left: auto;
+    }
+
+    &__key {
+        background-color: white;
+        border: none;
+        cursor: pointer; 
+        padding-right: 30px;
+    }
+
     &__logo {
         display: flex;
 

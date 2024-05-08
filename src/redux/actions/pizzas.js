@@ -7,29 +7,30 @@ export const setLoaded = (val) => ({
 
 export const fetchPizzas = (sortBy, category) => (dispatch) => {
     dispatch(setLoaded(false));
-    console.log(category)
-    if (category === null) {
-        category = '';
-    }
-    let p;
-    switch (sortBy) {
-  case 'цене':
-    p = "price"
-    break;
-  case 'популярности':
-    p = "rating"
-    break;
-  case 'алфавиту':
-    p = "name"
-    break;
-  default:
-    break;
+//     console.log(category)
+//     if (category === null) {
+//         category = '';
+//     }
+//     let p;
+//     switch (sortBy) {
+//   case 'цене':
+//     p = "price"
+//     break;
+//   case 'популярности':
+//     p = "rating"
+//     break;
+//   case 'алфавиту':
+//     p = "name"
+//     break;
+//   default:
+//     break;
     
-}
+// }
     return axios
-        .get(`http://localhost:3010/pizzas?category=${category}&_sort=${p}`)
-        .then(({ data }) => {
-            dispatch(setPizzas(data));
+      .get(`http://localhost:4444/pizzas`)
+      .then(({ data }) => {
+          // console.log(data)
+            dispatch(setPizzas(data.pizzas));
         });
 };
 // я думала можно юзануть тут useDispatch, чтоб просто написать функцию, которая будет в нужном месте вызывать setPizzas
@@ -43,3 +44,6 @@ export const setPizzas = (items) => ({
     type: "SET_PIZZAS",
     payload: items,
 });
+
+
+  // .get(`http://localhost:3010/pizzas?category=${category}&_sort=${p}`)

@@ -1,5 +1,5 @@
 import React from "react";
-import { Categories, Sort, PizzaBlock, PizzaLoaderBlock } from "../components";
+import { Categories, Sort, PizzaBlock, PizzaLoaderBlock, Banner } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../redux/actions/filters";
 import { useCallback } from "react";
@@ -23,6 +23,7 @@ const Home = () => {
 
     return (
         <div className="container">
+            {/* <Banner/> */}
             <div className="content__top">
                 <Categories
                     saveCategoriesInRedux={saveCategoriesInRedux}

@@ -1,0 +1,38 @@
+.auth {
+    max-width: 1400px;
+    margin: 0 auto;
+    &__container {
+        // max-width: 950px;
+        // border: 1px solid red;
+        border-radius: 10px;
+        width: 850px;
+        margin: 0 auto;
+        padding-left: 20px;
+    }
+    &__h1 {
+        color: black;
+        font-weight: 400;
+        margin-bottom: 56px;
+    }
+
+    &__input {
+        padding: 25px 30px;
+        width: 760px;
+        border: 1px solid black;
+        border-radius: 20px;
+        margin-bottom: 30px;
+        font-size: 25px;
+    }
+
+    &__btn {
+        background-color: #FE5F1E;
+        border: 1px solid #FE5F1E;
+        border-radius: 20px;
+        width: 760px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        color: white;
+        font-size: 25px;
+        cursor: pointer;
+    }
+}

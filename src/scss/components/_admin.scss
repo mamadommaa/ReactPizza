@@ -1,0 +1,71 @@
+.admin {
+    max-width: 1400px;
+    margin: 0 auto;
+    &__container {
+        border-radius: 10px;
+        width: 950px;
+        margin: 0 auto;
+        padding-left: 20px;
+    }
+    &__form {
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 30px 15px;
+        display: flex;
+        margin-bottom: 30px;
+    }
+    &__h1 {
+        color: black;
+        font-weight: 400;
+        margin-bottom: 56px;
+        font-size: 32px;
+        margin-bottom: 34px;
+    }
+    &__input {
+        max-width: 115px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin-right: 9px;
+        text-align: center;
+    }
+    &__input::placeholder {
+        text-align: center;
+    }
+    &__btn {
+        background-color: white;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+.admin-pizza {
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    margin-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 13px;
+    &__img {
+        // padding-left: 10px;
+        width: 80px;
+        height: 80px;
+        margin-right: 50px;
+    }
+    &__descr {
+        padding-top: 25px;
+        display: block;
+        max-width: 115px;
+        margin-right: 45px;
+    }
+}
+
+.banner {
+    padding-left: 20px;
+    &__image {
+        clip-path: inset(10px 0 60px 0);
+        // border-radius: 100px;
+    }
+}
