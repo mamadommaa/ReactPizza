@@ -1,21 +1,24 @@
-import React from "react";
+// import React from "react";
+import banner1 from '../assets/img/banner1.png';
+import banner2 from '../assets/img/banner2.png';
+import banner3 from '../assets/img/banner3.png';
+import banner4 from '../assets/img/banner4.png'
+import React, { useState, useEffect } from 'react';
 
-export const Banner = () => {
-  const images = [
-  "https://kartinki.pics/uploads/posts/2021-03/thumbs/1617174442_1-p-reklama-pitstsi-krasivo-1.png",
-  "https://seo-profik.ru/media/blog/covers/reklama-pitstsyi-marketingovyie-strategii-v-2021-godu.jpg",
-  "https://1place.su/ru/blog/wp-content/uploads/2018/10/post52.jpg"
-];
+const Banner = () => {
+  const images = [banner1, banner2, banner3, banner4];
+  const [currentImage, setCurrentImage] = useState(null);
 
-const randomIndex = Math.floor(Math.random() * images.length);
-const randomImg = images[randomIndex];
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    setCurrentImage(images[randomIndex]);
+  }, []); // [] гарантирует, что эффект запускается только один раз при монтировании
 
-
-    return (
-        <div className = "banner" >
-            <img className = "banner__image" src= {randomImg} alt="" />
-        </div>
-    );
-}
+  return (
+    <div className="banner">
+      {currentImage && <img className="banner__image" src={currentImage} alt="" />}
+    </div>
+  );
+};
 
 export default Banner;

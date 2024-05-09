@@ -23,7 +23,7 @@ const Home = () => {
 
     return (
         <div className="container">
-            {/* <Banner/> */}
+            <Banner/>
             <div className="content__top">
                 <Categories
                     saveCategoriesInRedux={saveCategoriesInRedux}

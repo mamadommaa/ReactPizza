@@ -3,9 +3,10 @@
     margin: 0 auto;
     &__container {
         border-radius: 10px;
-        width: 950px;
+        width: 1300px;
         margin: 0 auto;
         padding-left: 20px;
+        padding-top: 20px;
     }
     &__form {
         border: 1px solid black;
@@ -22,12 +23,12 @@
         margin-bottom: 34px;
     }
     &__input {
-        max-width: 115px;
+        max-width: 125px;
         padding-top: 7px;
         padding-bottom: 7px;
         border-radius: 10px;
         border: 1px solid black;
-        margin-right: 9px;
+        margin-right: 27px;
         text-align: center;
     }
     &__input::placeholder {
@@ -45,27 +46,29 @@
     border-radius: 20px;
     display: flex;
     margin-bottom: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 13px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 42px;
     &__img {
         // padding-left: 10px;
         width: 80px;
         height: 80px;
-        margin-right: 50px;
+        margin-right: 56px;
     }
     &__descr {
-        padding-top: 25px;
+        padding-top: 28px;
         display: block;
-        max-width: 115px;
-        margin-right: 45px;
+        max-width: 112px;
+        margin-right: 90px;
+    }
+    &__delete {
+        border: none;
+        background-color: white;
+        cursor: pointer;
     }
 }
 
 .banner {
-    padding-left: 20px;
-    &__image {
-        clip-path: inset(10px 0 60px 0);
-        // border-radius: 100px;
-    }
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

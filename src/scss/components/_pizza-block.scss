@@ -66,8 +66,17 @@
 
     &__price {
         font-weight: bold;
-        font-size: 22px;
+        font-size: 20px;
         line-height: 27px;
         letter-spacing: 0.015em;
+    }
+      &__discount {
+        color: #1FA908;
+        margin-right: 5px;
+    }
+    &__crossed {
+        color: #A0A0A0;
+        font-size: 15px;
+        text-decoration: line-through;
     }
 }

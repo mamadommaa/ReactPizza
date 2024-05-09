@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchPizzas } from '../redux/actions/pizzas';
 import {fetchDelOnePizza} from '../redux/actions/user'
-export const AdminPizza = ({ imageUrl, name, types, sizes, price, category, rating, id}) => {
+export const AdminPizza = ({ imageUrl, name, types, sizes, price, category, rating, id, discount}) => {
     //   console.log(id)
     const dispatch = useDispatch();
     const handleTouchPizzaId = () => {
@@ -24,8 +24,8 @@ export const AdminPizza = ({ imageUrl, name, types, sizes, price, category, rati
             <span className="admin-pizza__descr">{price + "р"}</span>
             <span className="admin-pizza__descr">{category}</span>
             <span className="admin-pizza__descr">{rating}</span>
-            <span className="admin-pizza__descr">0%</span>
-            <button onClick={handleTouchPizzaId}>
+            <span className="admin-pizza__descr">{ discount + "%"}</span>
+            <button className = "admin-pizza__delete" onClick={handleTouchPizzaId}>
                 <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect y="0.5" width="27" height="27" rx="9" fill="#D73636"/>
 <path d="M9 8.5L19.125 18.625" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>

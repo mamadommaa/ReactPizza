@@ -27,7 +27,8 @@ export const Admin = () => {
           name: '',
           price: '',
           category: '',
-      rating: '',
+          rating: '',
+      discount: '',
     },
   });
     
@@ -83,6 +84,11 @@ export const Admin = () => {
                         className="admin__input"
                         type="text"
                         placeholder="Рейтинг" />
+                     <input
+                        {...register('discount', { required: 'Укажите пароль' })}
+                        className="admin__input"
+                        type="text"
+                        placeholder="Скидка" />
                     <button className="admin__btn" type="submit">
                         <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="27" height="27" rx="9" fill="#30AB52"/>
@@ -100,7 +106,8 @@ export const Admin = () => {
                        sizes={element.sizes}
                        price={element.price}
                        category = {element.category}
-                       rating = {element.rating}
+                       rating={element.rating}
+                       discount = {element.discount}
                    />
                 ))}
 

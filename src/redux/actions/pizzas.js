@@ -29,7 +29,7 @@ export const fetchPizzas = (sortBy, category) => (dispatch) => {
     return axios
       .get(`http://localhost:4444/pizzas`)
       .then(({ data }) => {
-          // console.log(data)
+          console.log(data)
             dispatch(setPizzas(data.pizzas));
         });
 };

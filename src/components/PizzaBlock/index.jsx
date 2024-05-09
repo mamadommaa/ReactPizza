@@ -2,13 +2,23 @@ import classNames from "classnames";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "../Button";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addPizzaToCart } from "../../redux/actions/cart";
-// import ContentLoader from "react-content-loader";
 
-const PizzaBlock = ({ name, imageUrl, price, types, sizes, id }) => {
+
+
+const PizzaBlock = ({ name, imageUrl, price, types, sizes, id, discount }) => {
     const dispatch = useDispatch();
-
+    const DiscountPrice = () => {
+    return (
+        <div>
+            <span className="pizza-block__discount">
+                от {price - (discount / 100) * price} р
+            </span>
+            <span className="pizza-block__crossed">{price} р</span>
+        </div>
+    )
+    }
     
     const [activeType, setActiveType] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(sizes[0]);
@@ -76,7 +86,9 @@ const PizzaBlock = ({ name, imageUrl, price, types, sizes, id }) => {
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">от {price} ₽</div>
+                <div className="pizza-block__price">
+                   {discount === 0 ? `от ${price} р` : <DiscountPrice/> }
+                    </div>
                 <Button addPizza = {addPizza} className="button--add button--outline">
                     <svg
                         width={12}
