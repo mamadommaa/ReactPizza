@@ -7,11 +7,18 @@ export const setLoaded = (val) => ({
 
 export const fetchPizzas = (sortBy, category) => (dispatch) => {
     dispatch(setLoaded(false));
-//     console.log(category)
-//     if (category === null) {
-//         category = '';
-//     }
-//     let p;
+    // console.log(category)
+    if (category === null) {
+        category = '';
+    }
+    let p;
+    if (sortBy === 'цене') {
+        sortBy = 'price'
+    } else if (sortBy === 'популярности') {
+        sortBy = 'rating'
+    } else if (sortBy === 'алфавиту') {
+        sortBy = 'name'
+    }
 //     switch (sortBy) {
 //   case 'цене':
 //     p = "price"
@@ -25,9 +32,10 @@ export const fetchPizzas = (sortBy, category) => (dispatch) => {
 //   default:
 //     break;
     
-// }
+//     }
+    const params = new URLSearchParams({ sortBy, category });
     return axios
-      .get(`http://localhost:4444/pizzas`)
+      .get(`http://localhost:4444/pizzas?${params}`)
       .then(({ data }) => {
           console.log(data)
             dispatch(setPizzas(data.pizzas));

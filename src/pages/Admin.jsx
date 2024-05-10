@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import AdminPizza from "../components/AdminPizza";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchOnePizza } from "../redux/actions/user";
-import { fetchPizzas } from '../redux/actions/pizzas';
+
 export const Admin = () => {
     const pizzas = useSelector(({ pizzas }) => pizzas.items);
     const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export const Admin = () => {
         // console.log("Вот что попадает в input")
         dispatch(fetchOnePizza(data))
         console.log(data);
-        dispatch(fetchPizzas())
+        // dispatch(fetchPizzas())
         event.preventDefault();
         
 

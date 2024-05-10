@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { fetchPizzas } from '../redux/actions/pizzas';
 import {fetchDelOnePizza} from '../redux/actions/user'
 export const AdminPizza = ({ imageUrl, name, types, sizes, price, category, rating, id, discount}) => {
-    //   console.log(id)
+      console.log(category)
     const dispatch = useDispatch();
     const handleTouchPizzaId = () => {
         dispatch(fetchDelOnePizza(id))

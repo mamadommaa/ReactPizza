@@ -45,8 +45,10 @@ export const fetchOnePizza = createAsyncThunk(
     async (data, thunkAPI) => {
         try {
             const response = await axios.post('http://localhost:4444/pizzas/create', data);
+             const reduxState = thunkAPI.getState();
+            const { sortBy, category } = reduxState.filters; // Замените 'yourReducerName' на имя вашего редьюсера
             // Диспатчим функцию fetchPizzas после успешного завершения запроса
-            thunkAPI.dispatch(fetchPizzas());
+            thunkAPI.dispatch(fetchPizzas(sortBy, category));
             return response.data;
         } catch (error) {
             console.error('Error occurred:', error);
@@ -61,8 +63,10 @@ export const fetchDelOnePizza = createAsyncThunk(
     async (id, thunkAPI) => {
         try {
             const response = await axios.delete(`http://localhost:4444/pizzas/${id}`);
+             const reduxState = thunkAPI.getState();
+            const { sortBy, category } = reduxState.filters; // Замените 'yourReducerName' на имя вашего редьюсера
             // Диспатчим функцию fetchPizzas после успешного удаления пиццы
-            thunkAPI.dispatch(fetchPizzas());
+            thunkAPI.dispatch(fetchPizzas(sortBy, category));
             return response.data;
         } catch (error) {
             console.error('Error occurred:', error);
